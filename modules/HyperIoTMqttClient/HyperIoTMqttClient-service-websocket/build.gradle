@@ -1,0 +1,52 @@
+
+
+dependencies {
+	//OSGi Basic Imports
+	compileOnly group: "org.osgi", name: "osgi.core", version: project.osgiVersion
+	compileOnly group: "org.osgi", name:  "osgi.cmpn", version: project.osgiCompendiumVersion
+    // WebSocket service external deps (KafkaWebSocketSession)
+    compileOnly group: "it.acsoftware.hyperiot.base", name: "HyperIoTBase-util", version:project.hyperIoTVersion
+    compileOnly group: "it.acsoftware.hyperiot.base", name: "HyperIoTBase-service", version:project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.base", name: "HyperIoTBase-api", version:project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.base", name: "HyperIoTBase-model", version:project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.base", name: "HyperIoTBase-service-rest", version:project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.websocket", name: "HyperIoTWebSocket-api", version: project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.websocket", name: "HyperIoTWebSocket-model", version: project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.websocket", name: "HyperIoTWebSocket-session", version: project.hyperIoTVersion
+	compileOnly group: "it.acsoftware.hyperiot.websocket", name: "HyperIoTWebSocket-channel", version: project.hyperIoTVersion
+	compileOnly group: 'org.eclipse.jetty.websocket', name: 'websocket-servlet', version: '9.4.18.v20190429'
+    // Jackson dependecy
+    compileOnly group:"com.fasterxml.jackson.jaxrs",name:"jackson-jaxrs-json-provider",version:project.jacksonVersion
+	compileOnly group: 'io.projectreactor', name: 'reactor-core', version: '3.2.6.RELEASE'
+	compileOnly group: "org.apache.cxf", name:"cxf-bundle-jaxrs", version:"2.7.18"
+	compileOnly group: 'org.apache.cxf.dosgi', name: 'cxf-dosgi-common', version: '2.3.0'
+	//MQTT Paho
+	compileOnly group: 'org.eclipse.paho', name: 'org.eclipse.paho.client.mqttv3', version: project.eclipsePahoVersion
+	//Project Dependencies
+	compileOnly project(":modules:HyperIoTMqttClient:HyperIoTMqttClient-api")
+	compileOnly project(":modules:HyperIoTMqttClient:HyperIoTMqttClient-model")
+	compileOnly project(":modules:HyperIoTMqttClient:HyperIoTMqttClient-service")
+	compileOnly project(":modules:HyperIoTMqttClient:HyperIoTMqttClient-util")
+}
+
+jar {
+	manifest {
+		attributes('dsannotations': '*')
+	}
+}
+
+task buildHIT(type: GradleBuild) {
+	tasks = [ 'clean','build','install' ]
+}
+
+task publishHIT(type: GradleBuild) {
+	tasks = [ 'clean','build','install','publish' ]
+}
+
+publishing {
+    	publications {
+        	hyperiot(MavenPublication) {
+            	from components.java
+        	}
+    }
+ }

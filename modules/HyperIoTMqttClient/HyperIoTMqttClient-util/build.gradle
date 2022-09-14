@@ -1,0 +1,34 @@
+
+
+dependencies {
+	//OSGi Basic Imports
+	compileOnly group: "org.osgi", name: "osgi.core", version: project.osgiVersion
+	compileOnly group: "org.osgi", name:  "osgi.cmpn", version: project.osgiCompendiumVersion
+	compileOnly group: "it.acsoftware.hyperiot.base", name: "HyperIoTBase-util", version:project.hyperIoTVersion
+
+	compileOnly group: 'org.slf4j', name: 'slf4j-api', version: project.slf4jVersion
+
+    compileOnly project(":modules:HyperIoTMqttClient:HyperIoTMqttClient-api")
+}
+
+jar {
+	manifest {
+		attributes('dsannotations': '*')
+	}
+}
+
+task buildHIT(type: GradleBuild) {
+	tasks = [ 'clean','build','install' ]
+}
+
+task publishHIT(type: GradleBuild) {
+	tasks = [ 'clean','build','install','publish' ]
+}
+
+publishing {
+    	publications {
+        	hyperiot(MavenPublication) {
+            	from components.java
+        	}
+    }
+ }

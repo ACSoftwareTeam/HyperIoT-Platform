@@ -1,0 +1,5756 @@
+{
+	"info": {
+		"_postman_id": "f8883d06-c44b-4603-9216-3d0c2016253c",
+		"name": "HyperIoTRest.paw",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Registration and Setup Project",
+			"item": [
+				{
+					"name": "User registration",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"username\":\"aristide\",\"email\":\"aristide.cittadino\",\"password\":\"Abra_Cadabra_123\",\"passwordConfirm\":\"Abra_Cadabra_123\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/register",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User activation",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/activate?email=aristide.cittadino@acsoftware.it&code=c09f9da1-1eb4-45c5-ae69-99a5f5f8a07c",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"activate"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "aristide.cittadino@acsoftware.it"
+								},
+								{
+									"key": "code",
+									"value": "c09f9da1-1eb4-45c5-ae69-99a5f5f8a07c"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Login",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "aristide"
+								},
+								{
+									"key": "password",
+									"value": "Abra_Cadabra_123"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/authentication/login",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Default\",\"description\":\"Default user role\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add default user role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/7/user/6",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"7",
+								"user",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Grant user permission on a given role and resource",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"All permissions\",\"actionIds\":255,\"entityResourceName\":\"it.acsoftware.hyperiot.hproject.model.HProject\",\"role\":{\"id\":7}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user project",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Third project\",\"description\":\"Test project\",\"user\":{\"id\":8}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add user device",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"deviceName\":\"OtherDec1\",\"brand\":\"ACS\",\"model\":\"Smart Bulb\",\"firmwareVersion\":\"1.0\",\"softwareVersion\":\"1.0\",\"description\":\"Smart bulb with energy meter\",\"project\":{\"id\":\"7\"},\"password\":\"passwordPass/01\",\"passwordConfirm\":\"passwordPass/01\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add a device packet",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"TestPacket\",\"type\":\"OUTPUT\",\"format\":\"JSON\",\"serialization\":\"AVRO\",\"device\":{\"id\":9},\"version\":\"1.0\",\"fields\":[{\"name\":\"temperature\",\"description\":\"Temperature\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"},{\"name\":\"humidity\",\"description\":\"Humidity\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"}]}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update (add) packet fields.",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":43,\"name\":\"TestPacket\",\"type\":\"OUTPUT\",\"format\":\"JSON\",\"serialization\":\"AVRO\",\"device\":{\"id\":9},\"version\":\"1.0\",\"fields\":[{\"name\":\"temperature\",\"description\":\"Temperature\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"},{\"name\":\"humidity\",\"description\":\"Humidity\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"}]}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add rule definition for a packet/project",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Test rule 3\",\"description\":\"Everybody wants to rule the world.\",\"ruleDefinition\":\"packet.gps.latitude >= 3 AND packet.temperature > 6\",\"type\":0,\"project\":{\"id\":7},\"packet\":{\"id\":43},\"jsonActions\":\"[\\\"{ \\\\\\\"actionName\\\\\\\":\\\\\\\"AddCategoryRuleAction\\\\\\\", \\\\\\\"categoryIds\\\\\\\":[  123 ] }\\\"]\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all Storm topologies config for a given project",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/generate/10",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"generate",
+								"10"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Base",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "https://{{domain}}/terranova/hbase",
+							"protocol": "https",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"terranova",
+								"hbase"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Role",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Role List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles?delta=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/7",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"7"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Default123\",\"description\":\"Default user role\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Single Role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 7,\n  \"name\": \"Default\",\n  \"description\": \"Default user role\"\n}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/55",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"55"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User roles",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "pippo",
+								"value": "",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/user/6",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"user",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add default user role",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/7/user/6",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"7",
+								"user",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove User roles",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/7/user/6",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"7",
+								"user",
+								"6"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/roles/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"roles",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/authentication/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"authentication",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authentication",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200,201, 202]);",
+									"});",
+									"",
+									"pm.globals.set(\"JWT Token\", pm.response.json().token);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "hadmin"
+								},
+								{
+									"key": "password",
+									"value": "admin"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/authentication/login",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"authentication",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "testWhoAmI",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/authentication/whoAmI",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"authentication",
+								"whoAmI"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/authentication/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"authentication",
+								"swagger.json"
+							]
+						},
+						"description": "\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HProject",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HProjects List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/all/cards",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"all",
+								"cards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HProject",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/33",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HProjects List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects?delta=12",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "12"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single HProject",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/10",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"10"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HProject ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"First\",\"description\":\"Test project\",\"user\":{\"id\":6}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HProject  - AutoCreate",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Autocreated project\",\"description\":\"Test project\",\"user\":{\"id\":4}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/auto-register-project",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"auto-register-project"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AutoCreate create challenge",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"plainTextChallene\":\"text1\",\"cipherTextChallenge\":\"LiCLRMyYe+/3VQ9/wGy1XdI9NHPmAL89oisHZxvqZi7jehclhh16UrFNyKME1pPvYjTghWmZGLEzZUxC8kntezXi9HHv2mtgNJ8KVf8lL0jO/0BrYVu+inM1e3M2lNPbU5IXk5AtZfhY/ZhlqPcPUb4MDI6kWvBYNtXUaT9+W+12yaEJIQeNyp5GUVLiM/NYdWUvb8amE4TbrxNeqULBy/jym58o75ZRcuQedvN+npkwqzfkHG8hJ3nf8YSaS59ePvc8yQmD01Z+xtkS0N9H8qB1P+CRJCSTMsxofZIU1iqRhikQxNIrqX1++eT8oexP9QlYDxeR5U6b1vqPkYRZEQ==\",\"projectId\":\"29\",\"packets\":[]}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/auto-register-project/challenge/26",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"auto-register-project",
+								"challenge",
+								"26"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AutoCreate Devices and packets",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"cipherTextChallenge\":\"LiCLRMyYe+/3VQ9/wGy1XdI9NHPmAL89oisHZxvqZi7jehclhh16UrFNyKME1pPvYjTghWmZGLEzZUxC8kntezXi9HHv2mtgNJ8KVf8lL0jO/0BrYVu+inM1e3M2lNPbU5IXk5AtZfhY/ZhlqPcPUb4MDI6kWvBYNtXUaT9+W+12yaEJIQeNyp5GUVLiM/NYdWUvb8amE4TbrxNeqULBy/jym58o75ZRcuQedvN+npkwqzfkHG8hJ3nf8YSaS59ePvc8yQmD01Z+xtkS0N9H8qB1P+CRJCSTMsxofZIU1iqRhikQxNIrqX1++eT8oexP9QlYDxeR5U6b1vqPkYRZEQ==\",\"projectId\":\"29\",\"packets\":[]}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/register",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update HProject ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":15,\"name\":\"First project12\",\"description\":\"Test projectdasdasd\",\"user\":{\"id\":4},\"entityVersion\":\"3\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete HProject ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/36",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"36"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Areas List HProject",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"disabled": true
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/218/areas",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"218",
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hprojects/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hprojects",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HUser",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers?delta=10&page=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "10"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single User",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Single User",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"user normal222\",\"lastname\":\"norma\",\"username\":\"HDEVICEADMIN\",\"email\":\"usern2221@acsoftware.it1212\",\"password\":\"Vincen87/\",\"passwordConfirm\":\"Vincen87/\",\"active\":\"true\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User registration",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"test name\",\"lastname\":\"test lastname\",\"username\":\"newtester\",\"email\":\"pippo@acsoftware.it\",\"password\":\"Abra_Cadabra_123\",\"passwordConfirm\":\"Abra_Cadabra_123\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/register",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Activate Registration",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/activate?email=vincenzo.longo@acsoftware.it&code=cc752134-f121-4b7a-83dc-fc34adce7dd1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"activate"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "vincenzo.longo@acsoftware.it"
+								},
+								{
+									"key": "code",
+									"value": "cc752134-f121-4b7a-83dc-fc34adce7dd1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Password Recovery Request",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/resetPasswordRequest?email=aristide.cittadino@acsoftware.it",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"resetPasswordRequest"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "aristide.cittadino@acsoftware.it"
+								},
+								{
+									"key": "code",
+									"value": "141973d6-f71e-42ab-9ba6-db3300ff8be9",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset Password",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"password\":\"stringPass\",\"passwordConfirm\":\"stringPass\",\"email\":\"aristide.cittadino@acsoftware.it\",\"resetCode\":\"8b9588fc-30aa-473c-b50a-650a3c14d0d7\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/resetPassword",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"resetPassword"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "vincenzo.longo@acsoftware.it",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "f01573da-0d15-4747-b9e8-3772b6970e13",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Password",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":460,\"newPassword\":\"passChange01/\",\"oldPassword\":\"admin\",\"passwordConfirm\":\"admin\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/password",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"password"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "email",
+									"value": "vincenzo.longo@acsoftware.it",
+									"disabled": true
+								},
+								{
+									"key": "code",
+									"value": "f01573da-0d15-4747-b9e8-3772b6970e13",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Single User",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":6,\"name\":\"Vincenzo\",\"lastname\":\"Longo\",\"username\":\"vincenzo\",\"email\":\"vincenzo.longo@acsoftware.it\",\"active\":true}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Single User",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/19",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"19"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/husers/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"husers",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Permission",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Permissions List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Permissions List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions?delta=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actions List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions/actions",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions",
+								"actions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Permission",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions/8",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions",
+								"8"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Permission ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"All permissions\",\"actionIds\":255,\"entityResourceName\":\"it.acsoftware.hyperiot.hproject.model.HProject\",\"role\":{\"id\":7}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Permission ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":8,\"name\":\"All permissions\",\"actionIds\":63,\"entityResourceName\":\"it.acsoftware.hyperiot.hproject.model.HProject\",\"resourceId\":0,\"role\":{\"id\":7}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Permission ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions/154",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions",
+								"154"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/permissions/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"permissions",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HDevice",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HDevices List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HDevices List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices?delta=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single HDevice",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices/12",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HDevice",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"deviceName\":\"deviceCert2\",\"brand\":\"ACS\",\"model\":\"Smart Bulb\",\"firmwareVersion\":\"1.0\",\"softwareVersion\":\"1.0\",\"description\":\"Smart bulb with energy meter\",\"project\":{\"id\":\"1\"},\"password\":\"passwordPass/01\",\"passwordConfirm\":\"passwordPass/01\",\"loginWithSSLCert\":\"true\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit HDevice",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"12\",\"deviceName\":\"TestDevice\",\"brand\":\"ACS\",\"model\":\"Smart Bulb\",\"firmwareVersion\":\"1.0\",\"softwareVersion\":\"1.0\",\"description\":\"Smart bulb with energy meter\",\"project\":{\"id\":\"10\"}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Change Passowrd HDevice",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"12\",\"oldPassword\":\"passwordPass/01\",\"newPassword\":\"passwordPass/01\",\"passwordConfirm\":\"passwordPass/01\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices/password",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices",
+								"password"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "218",
+									"disabled": true
+								},
+								{
+									"key": "oldPassword",
+									"value": "admin",
+									"disabled": true
+								},
+								{
+									"key": "newPassword",
+									"value": "passK09/",
+									"disabled": true
+								},
+								{
+									"key": "passwordCpnfirm",
+									"value": "passK09/",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete HDevice",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices/23",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices",
+								"23"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hdevices/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hdevices",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "HPacket",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HPacket List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HPacket List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets/all/33/types?types=INPUT",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets",
+								"all",
+								"33",
+								"types"
+							],
+							"query": [
+								{
+									"key": "types",
+									"value": "INPUT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "HPacket List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets?delta=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Gets Single HPacket",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets/14",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets",
+								"14"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add HPacket",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"TestPacket\",\"type\":\"OUTPUT\",\"format\":\"JSON\",\"serialization\":\"AVRO\",\"device\":{\"id\":9},\"version\":\"1.0\",\"fields\":[{\"name\":\"temperature\",\"description\":\"Temperature\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"},{\"name\":\"humidity\",\"description\":\"Humidity\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"}]}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update HPacket fields",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":14,\"name\":\"TestPacket\",\"type\":\"OUTPUT\",\"format\":\"JSON\",\"serialization\":\"AVRO\",\"device\":{\"id\":12},\"version\":\"1.0\",\"fields\":[{\"name\":\"temperature\",\"description\":\"Temperature\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"},{\"name\":\"humidity\",\"description\":\"Humidity\",\"type\":\"DOUBLE\",\"multiplicity\":\"SINGLE\"}]}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete HPacket",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"test1\",\"type\":\"INPUT\",\"format\":\"JSON\",\"serialization\":\"AVRO\",\"device\":{\"id\":216}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets/2361",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets",
+								"2361"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/hpackets/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"hpackets",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Area",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Areas List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Areas List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Single Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/545",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"545"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"description\":\"Just a simple description\",\"name\":\"javascript:\",\"project\":{\"id\":\"18\"}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"547\",\"description\":\"test PUT\",\"name\":\"Area Name\",\"project\":{\"id\":\"218\"}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"547\",\"description\":\"test PUT\",\"name\":\"Area Name\",\"project\":{\"id\":\"218\",\"user\":{\"id\":\"77\"}}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/547",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"547"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Devices Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/548/devices",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"548",
+								"devices"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Device Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"547\",\"description\":\"test PUT\",\"name\":\"Area Name\",\"project\":{\"id\":\"218\"}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/548/devices/549",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"548",
+								"devices",
+								"549"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Device Area",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":\"547\",\"description\":\"test PUT\",\"name\":\"Area Name\",\"project\":{\"id\":\"218\",\"user\":{\"id\":\"77\"}}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/548/devices/549",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"548",
+								"devices",
+								"549"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/areas/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"areas",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Rules",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rule List ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Action List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules/actions?type=ENRICHMENT",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules",
+								"actions"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ENRICHMENT"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Rule List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules?delta=1&page=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "1"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Rule",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules/30",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules",
+								"30"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Rule",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"test rule\",\"description\":\"Everybody wants to rule the world.\",\"ruleDefinition\":\"packet.gps.latitude >= 3 AND packet.temperature > 6\",\"type\":0,\"project\":{\"id\":10},\"packet\":{\"id\":14},\"jsonActions\":\"[\\\"{ \\\\\\\"actionName\\\\\\\":\\\\\\\"AddCategoryRuleAction\\\\\\\", \\\\\\\"categoryIds\\\\\\\":[  123 ] }\\\"]\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Rule",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":30,\"name\":\"Test Rule\",\"description\":\"Everybody wants to rule the world.\",\"ruleDefinition\":\"packet.gps.latitude >= 3 AND packet.temperature > 24\",\"type\":0,\"project\":{\"id\":10},\"packet\":{\"id\":14},\"jsonActions\":\"[\\\"{ \\\\\\\"actionName\\\\\\\":\\\\\\\"AddCategoryRuleAction\\\\\\\", \\\\\\\"categoryIds\\\\\\\":[  123 ] }\\\"]\"}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Rule",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules/33",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules",
+								"33"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/rules/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"rules",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Mail",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/mail/templates/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"mail",
+								"templates",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/mail/templates/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"mail",
+								"templates",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Email List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/mail/templates?delta=-44&page=1",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"mail",
+								"templates"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "-44"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Send Email",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/mail/templates/test/send",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"mail",
+								"templates",
+								"test",
+								"send"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/mail/templates/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"mail",
+								"templates",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/book/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"book",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard Realtime",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards/project/22/realtime",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards",
+								"project",
+								"22",
+								"realtime"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard Offline",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards/project/22/offline",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards",
+								"project",
+								"22",
+								"offline"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards?delta=5&page=2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Dashboard",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards/412",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards",
+								"412"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Dashboard",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"name\":\"Ciao\",\"description\":\"123\",\"hproject\":{\"id\":15}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/books",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Dashboard",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":16,\"name\":\"PUT22\",\"dashboardType\":\"1\",\"hproject\":{\"id\":15}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Dashboard",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":415,\"name\":\"PUT\",\"dashboardType\":\"1\",\"hproject\":{\"id\":219}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards/432",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards",
+								"432"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboards/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboards",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Dashboard Widget",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard Widget List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Dashboard Widget  List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets?delta=5&page=2",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets"
+							],
+							"query": [
+								{
+									"key": "delta",
+									"value": "5"
+								},
+								{
+									"key": "page",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/600",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"600"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"widgetConf\":\"\\\"{\\\\\\\"descrizione\\\\\\\":\\\\\\\"test Vincenzo\\\\\\\"}\\\"\",\"dashboard\":{\"id\":16}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":481,\"widgetId\":\"widget.classname\",\"widgetConf\":\"\\\"{\\\\\\\"descrizione\\\\\\\":\\\\\\\"test PUT\\\\\\\"}\\\"\",\"dashboard\":{\"id\":412}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":415,\"name\":\"PUT\",\"dashboardType\":\"1\",\"hproject\":{\"id\":219}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/436",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"436"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configuration Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/configuration/439",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"configuration",
+								"439"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Configuration Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\\\"description\\\":\\\"test setDashboardWidgetConf\\\"}"
+						},
+						"url": {
+							"raw": "http://localhost:8181/hyperiot/dashboardwidgets/configuration?dashboardWidgetId=4390",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8181",
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"configuration"
+							],
+							"query": [
+								{
+									"key": "dashboardWidgetId",
+									"value": "4390"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Configuration Dashboard Widget ",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/all/16",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"all",
+								"16"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/dashboardwidgets/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"dashboardwidgets",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Company",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company List",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies/all",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Company List Pagination",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Company",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies/505",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies",
+								"505"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Company",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"businessName\":\"ACSoftware\",\"invoiceAddress\":\"Lamezia Terme\",\"city\":\"Lamezia Terme\",\"postalCode\":\"012345678901\",\"nation\":\"javascript:\",\"vatNumber\":\"0123456789011\",\"huserCreator\":{\"id\":77}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Company",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"id\":505,\"businessName\":\"ACSoftware\",\"city\":\"lamezia PUT\",\"invoiceAddress\":\"lamezia PUT\",\"nation\":\"italia\",\"postalCode\":\"88000\",\"vatNumber\":\"01234567890\",\"huserCreator\":{\"id\":\"77\"}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Company",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"businessName\":\"1\",\"city\":\"lamezia\",\"invoiceAddress\":\"lamezia\",\"nation\":\"italia\",\"postalCode\":\"88000\",\"vatNumber\":\"983475\",\"huserCreator\":{\"id\":\"77\"}}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies/529",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies",
+								"529"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/companies/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"companies",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Storm",
+			"item": [
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Generate Topology HProject",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/generate/800",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"generate",
+								"800"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Submit Topology",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/18/submit",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"18",
+								"submit"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Kill Topology",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/23/kill",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"23",
+								"kill"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Topology Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/23/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"23",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Topology Jar",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/update-jar-from-maven/latest",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"update-jar-from-maven",
+								"latest"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List Storm Topologies",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/topology/list",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"topology",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/storm/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"storm",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Kafka",
+			"item": [
+				{
+					"name": "Swagger",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/swagger.json",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"swagger.json"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Module Status",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/module/status",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"module",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Topic",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic\":\"prova\",\"numPartition\":1,\"replicationFactor\":1}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/topic",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": " Create Topics",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[{\"topic\":\"provaList\",\"numPartition\":1,\"replicationFactor\":1}]"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/topics",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Topics",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\"prova\"]"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/topics",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"topics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create ACL",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic\":\"prova\",\"numPartition\":1,\"replicationFactor\":1}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/topic",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"topic"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Drop ACL",
+					"protocolProfileBehavior": {
+						"followRedirects": false,
+						"followOriginalHttpMethod": false,
+						"followAuthorizationHeader": false
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "AUTHORIZATION",
+								"value": "JWT {{JWT Token}}"
+							},
+							{
+								"key": "Accept",
+								"value": "application/json\n"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\"topic\":\"prova\",\"numPartition\":1,\"replicationFactor\":1}"
+						},
+						"url": {
+							"raw": "http://{{domain}}/hyperiot/kafka/topic",
+							"protocol": "http",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"hyperiot",
+								"kafka",
+								"topic"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,5 @@
+Import-Package: org.slf4j.*,\
+    it.acsoftware.hyperiot.base.test.containers
+
+Export-Package: \
+    it.acsoftware.hyperiot.services.util;

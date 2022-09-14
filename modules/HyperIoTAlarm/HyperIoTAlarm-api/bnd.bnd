@@ -1,0 +1,8 @@
+Import-Package: \
+    it.acsoftware.hyperiot.base.api;version='${range;[===,+)}',\
+    it.acsoftware.hyperiot.alarm.model;version='${range;[===,+)}',\
+    it.acsoftware.hyperiot.alarm.event.model;version='${range;[===,+)}',\
+    it.acsoftware.hyperiot.base.api.entity;version='${range;[===,+)}'
+Export-Package: \
+    it.acsoftware.hyperiot.alarm.api,\
+    it.acsoftware.hyperiot.alarm.event.api
